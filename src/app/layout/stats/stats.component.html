@@ -2,7 +2,7 @@
     <app-page-header [heading]="'Stats'" [icon]="'fa-desktop'"></app-page-header>
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-lg-4">
             <div class="card text-white bg-primary mb-3">
                 <div class="card-header">Miners</div>
                 <div class="card-body">
@@ -10,6 +10,30 @@
                 </div>
             </div>
         </div>
-        <!-- /.col-sm-4 -->        
+        <!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Pool Hash Rate</div>
+                <div class="card-body">
+                    <h4 class="card-title">{{poolHashRateFormatted}}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Network Difficulty</div>
+                <div class="card-body">
+                    <h4 class="card-title">{{poolStats.networkStats.difficulty}}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Network Block Height</div>
+                <div class="card-body">
+                    <h4 class="card-title">{{poolStats.networkStats.blockHeight}}</h4>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
-import { PoolStatsService } from '../../shared/services/pool-stats.service'
+import { PoolStatsService } from '../../shared/services/pool-stats.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-stats',
@@ -10,11 +11,18 @@ import { PoolStatsService } from '../../shared/services/pool-stats.service'
 })
 export class StatsComponent implements OnInit {
     poolStats;
+    poolHashRateFormatted;
+    networkHashRateFormatted;
 
     constructor(private poolStatsService: PoolStatsService) {
     }
 
     ngOnInit() {
-        this.poolStats = this.poolStatsService.getPoolStats().subscribe(p=>this.poolStats = p);
+        this.poolStatsService.getPoolStats().subscribe(p=> {
+            this.poolStats = p;
+            this.poolHashRateFormatted = this.poolStatsService.toSI(p.hashRate * environment.poolHashRateScale, 6, 'H/s');
+            this.networkHashRateFormatted = this.poolStatsService.toSI(p.networkStats.hashRate, 6, 'H/s');
+        });
+        
     }
 }
